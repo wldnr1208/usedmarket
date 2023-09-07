@@ -12,7 +12,7 @@ const NavItem = ({ mobile }: { mobile?: boolean }) => {
         <Link href="/admin">Amin</Link>
       </li>
       <li className="py-2 text-center border-b-4 cursor-pointer">
-        <Link href="/User">User</Link>
+        <Link href="/user">User</Link>
       </li>
       <li className="py-2 text-center border-b-4 cursor-pointer">
         <button>Signout</button>
