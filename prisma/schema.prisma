@@ -57,6 +57,7 @@ model User {
   favoriteIds String[]
   products    Product[]
   comments    Comments[]
+  //default(기본)으로는 유저
   userType    UserType   @default(User)
 
   conversations    Conversation[]
