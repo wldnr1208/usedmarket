@@ -27,7 +27,6 @@ const LoginPage = () => {
     try {
       const data = signIn("credentials", body);
       console.log(data);
-      router.push("/api/register");
     } catch (error) {
       console.log(error);
     } finally {
@@ -64,7 +63,7 @@ const LoginPage = () => {
           <p className="text-gray-400">
             Not a member?
             <Link href="/auth/register" className="text-black hover:underline">
-              Register
+              Login
             </Link>
           </p>
         </div>

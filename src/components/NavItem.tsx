@@ -4,8 +4,7 @@ import Link from "next/link";
 import React from "react";
 const NavItem = ({ mobile }: { mobile?: boolean }) => {
   const { data: session, status } = useSession();
-  console.log({ session }, status);
-  session?.user?.id;
+
   return (
     <ul
       className={`text-md justify-center flex gap-4 w-full items-center ${
