@@ -7,12 +7,14 @@ import Input from "@/components/Input";
 import KakaoMap from "@/components/KakaoMap";
 import { categories } from "@/components/categories/Categories";
 import CategoryInput from "@/components/categories/CategoryInput";
+import axios from "axios";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 const ProductUoloadPage = () => {
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -40,7 +42,23 @@ const ProductUoloadPage = () => {
   const KakaoMap = dynamic(() => import("../../../components/KakaoMap"), {
     ssr: false, //서버사이드 렌더링을 disabled시키는 구문
   });
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {};
+  const router = useRouter();
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
+
+    axios
+      .post("/api/products", data)
+      .then((response) => {
+        router.push(`/products/${response.data.id}`);
+        reset();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value);
   };

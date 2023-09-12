@@ -24,7 +24,7 @@ const CategoryInput = ({
         flex
         flex-col
         gap-3
-        hover: border-orange-500
+      hover:border-orange-500
         transition
         cursor-pointer
         ${selected ? "border-orange-500" : "border-neutral-200"}
